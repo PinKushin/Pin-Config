@@ -1,0 +1,18 @@
+"motd_entries"
+{
+	"last_request_time"		"2015-12-20 14:05:42"
+	"last_request_language"		"english"
+	"72"
+	{
+		"post_time"		"2015-12-18 02:00:00"
+		"title_english"		"The Tough Break Update is here!"
+		"text_english"		"Four new community-created maps, class and weapon balance tuning, new contracts and unique painted weapons from four new collections, a community-created cosmetics case, and more!
+			
+See all the details by clicking the button below."
+		"url"		"http://www.teamfortress.com/toughbreak/"
+		"image"		"../vgui/main_menu/motd_tough_break"
+		"header_type"		"0"
+		"header_english"		"Major Update Live"
+		"header_icon"		"class_icons/filter_all_motd"
+	}
+}

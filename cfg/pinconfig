@@ -1,0 +1,4 @@
+alias sboardtoggle "sboardtoggleon"
+alias sboardtoggleon "+showscores; net_graph 1; alias sboardtoggle sboardtoggleoff"
+alias sboardtoggleoff "-showscores; net_graph 0; alias sboardtoggle sboardtoggleon"
+bind tab sboardtoggle
