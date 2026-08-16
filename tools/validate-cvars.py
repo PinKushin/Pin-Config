@@ -55,14 +55,30 @@ def main():
         # a catastrophic config rather than a bad file path.
         raise SystemExit(f"{dump} parsed to zero cvars; wrong file, or the format changed")
 
+    files = sorted(CFG.rglob("*.cfg"))
+
+    # Aliases the config defines itself. A bare `sens8` on its own line is an
+    # alias invocation, not a cvar, and without this pass it is reported MISSING
+    # -- a false positive that trains you to ignore the output.
+    aliases = set()
+    for path in files:
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            line = raw.split("//")[0].strip()
+            if line.startswith("alias "):
+                parts = line.split(None, 2)
+                if len(parts) >= 2:
+                    aliases.add(parts[1].strip('"').lower())
+
     problems, checked = [], 0
-    for path in sorted(CFG.rglob("*.cfg")):
+    for path in files:
         for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             line = raw.split("//")[0].strip()
             if not line:
                 continue
             token = line.split()[0]
             if token in NOT_CVARS or token.startswith(("+", "-")):
+                continue
+            if token.lower() in aliases:
                 continue
             checked += 1
             flags = live.get(token.lower())
