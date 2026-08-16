@@ -1,3 +1,0 @@
-pass_warehouse
-pass_warehouse_goal2
-pass_pinewood
